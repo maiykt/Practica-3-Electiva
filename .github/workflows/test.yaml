@@ -1,0 +1,24 @@
+name: Pruebas Unitarias
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Instalar Dependencias
+        run: npm install
+
+      - name: Ejecutar Pruebas
+        run: npm test
